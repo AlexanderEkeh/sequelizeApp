@@ -1,0 +1,97 @@
+<div class="container">
+  <div class ="jumbotron">
+    <img src="/assets/images/burger.png">
+    <h1 id="mainText"> Eat-Da-Burger!</h1>
+    <h2>Hold the pickles, hold the lettuce, special orders don't upset us!</h2>
+  </div>
+  <div class="tickercontainer">
+    <ul id="webTicker">
+      <li>Cheddar Cheese</li>
+      <li>Pickles</li>
+      <li>Jalapenos</li>
+      <li>Lettuce</li>
+      <li>Onions</li>
+      <li>Chili</li>
+      <li>Bacon</li>
+      <li>BBQ Sauce</li>
+      <li>Ketchup</li>
+      <li>Mustard</li>
+      <li>Relish</li>
+      <li>Mayonnaise</li>
+      <li>Secret Sauce</li>
+    </ul>
+  </div>
+  <h2 class="lead">Add a Burger</h2>
+  <!-- <p>Enter a burger that you want to eat, then click the button.</p> -->
+
+<form class="create-update-form" action="burgers/create" method="POST">
+
+  <div class="form-group">
+    <!-- <label for="ca">Name Your burger:</label> -->
+  <!--   <textarea class="form-control input-lg" type="text" name="burger_name" rows ='3'></textarea> -->
+    <input type="text" name="burger_name" class="choice" placeholder="Enter a burger that you want to eat here, then click the button below.">
+  </div>
+  <button class = "btn btn-default btn-lg" type="submit">Add Burger</button>
+</form>
+<hr>
+
+
+
+{{!-- burger list before prior to digestion --}}
+<!--  -->
+<!-- <container> -->
+<!-- <div class = "row">
+  <div class = "col-md-4 col-md-offset-1">
+    <div class="panel-panel default"> -->
+<ol id = "left-group">
+  <h1>Order Up!</h1>
+
+  {{#each burgers}}
+    {{#unless this.devoured}}
+    <div class="input-group">
+    <li>
+      <!-- <li class = "list-group-item" class="text-capitalize"> -->
+        
+        <!-- <p class="lead"> {{this.burger_name}}</p> -->
+        {{this.burger_name}}
+
+        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" class = "form-control" id="toEat" name="devoured" value="true">
+          <button class="btn btn-default btn-lg" id="devourBtn" type="submit">Devour</button>
+        </form>
+       
+      </li>
+       </div>
+    {{/unless}}
+  {{/each}}
+</ol>
+
+<!-- </div>
+</div>
+</div> -->
+<!-- </container> -->
+
+{{!-- burger list after digestion --}}
+<!-- <div class = "row">
+  <div class = "col-md-6 col-md-offset-1"> -->
+    <!-- <div class="panel-panel default"> -->
+
+<div>
+<ul id = "right-group">
+  {{#each burgers}}
+    {{#if this.devoured}}
+      <li class ="list-group-item">
+        {{this.burger_name}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+<!-- </div> -->
+<!-- </div> -->
+</div>
+
+<form action="burgers/delete/?_method=DELETE" method="POST">
+ <button type="submit" id="killIt">Clear all the burgers</button>
+</form>
+</div>
+

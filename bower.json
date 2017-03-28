@@ -1,0 +1,21 @@
+{
+  "name": "burger",
+  "description": "Homework 14",
+  "main": "index.handlebars",
+  "authors": [
+    "Kylie"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ABitOfKylie/burger",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}
